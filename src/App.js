@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import { data } from './mock';
+import Button from '@mui/material/Button';
 
 const marks = [
   {
@@ -26,6 +27,22 @@ const marks = [
   },
 ];
 
+const theme = {
+  primaryColor: '#004080', // Navy Blue
+  secondaryColor: '#F5F5F5', // Grayish background
+  accentColor: '#FFCC00', // Gold
+};
+
+const buttonStyle = {
+  backgroundColor: theme.primaryColor,
+  color: theme.secondaryColor,
+  padding: '10px 20px',
+  border: 'none',
+  borderRadius: '5px',
+  cursor: 'pointer',
+  margin: '10px 0',
+};
+
 function App() {
   const [sliderValue, setSliderValue] = useState(0);
   const [color, setColor] = useState('');
@@ -46,26 +63,21 @@ function App() {
   };
 
   const handleClick = () => {
-    const newData = data.filter(record => record.color === color);
+    const newData = data.filter((record) => record.color === color);
     setLinks(newData);
     setDisplay(true);
-  }
-
-  console.log(sliderValue);
-  console.log(color);
-  console.log(links);
+  };
 
   return (
-    <div style={{ textAlign: 'center' }}>
+    <div style={{ textAlign: 'center', padding: '20px', color: theme.primaryColor }}>
       <h1>Missionary Wellness App</h1>
       <h2>How are you feeling today?</h2>
-      <Box sx={{ width: 300, margin: '0 auto' }}>
+      <Box sx={{ width: 300, margin: '0 auto', backgroundColor: 'rgba(169,169,169,0.3)', padding: '20px', borderRadius: '8px' }}>
         <Slider
           aria-label="Restricted values"
           value={sliderValue}
           onChange={handleChange}
           step={null}
-          // valueLabelDisplay={null}
           marks={marks.map((mark) => ({
             ...mark,
             label: (
@@ -75,19 +87,22 @@ function App() {
             ),
           }))}
           sx={{
-            // Apply custom styling to change background color
             '& .MuiSlider-rail': {
               backgroundColor: 'lightgray',
             },
             '& .MuiSlider-track': {
-              backgroundColor: color, // Use the color of the selected mark
+              backgroundColor: color,
             },
           }}
         />
       </Box>
-      <button onClick={handleClick}>Show resources</button>
-      <div style={{display: display ? 'block' : 'none'}}>
-          <p>hello</p>
+      <Button variant="contained" style={buttonStyle} onClick={handleClick}>
+        Show resources
+      </Button>
+      <div style={{ display: display ? 'block' : 'none', marginTop: '20px' }}>
+        {links.map((link, index) => (
+          <p key={index}>{link.link}</p>
+        ))}
       </div>
     </div>
   );
