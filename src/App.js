@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
+import { data } from './mock';
 
 const marks = [
   {
@@ -28,10 +29,13 @@ const marks = [
 function App() {
   const [sliderValue, setSliderValue] = useState(0);
   const [color, setColor] = useState('');
+  const [links, setLinks] = useState([]);
+  const [display, setDisplay] = useState(false);
 
   const handleChange = (event, newValue) => {
     setSliderValue(newValue);
     getColor(newValue);
+    setDisplay(false);
   };
 
   const getColor = (value) => {
@@ -41,8 +45,15 @@ function App() {
     setColor(col[0].color);
   };
 
+  const handleClick = () => {
+    const newData = data.filter(record => record.color === color);
+    setLinks(newData);
+    setDisplay(true);
+  }
+
   console.log(sliderValue);
   console.log(color);
+  console.log(links);
 
   return (
     <div style={{ textAlign: 'center' }}>
@@ -74,6 +85,10 @@ function App() {
           }}
         />
       </Box>
+      <button onClick={handleClick}>Show resources</button>
+      <div style={{display: display ? 'block' : 'none'}}>
+          <p>hello</p>
+      </div>
     </div>
   );
 }
