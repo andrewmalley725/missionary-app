@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
-import { data } from './mock';
+import { data } from './data';
 import Button from '@mui/material/Button';
 
 const marks = [
@@ -45,7 +45,7 @@ const buttonStyle = {
 
 function App() {
   const [sliderValue, setSliderValue] = useState(0);
-  const [color, setColor] = useState('');
+  const [color, setColor] = useState('red');
   const [links, setLinks] = useState([]);
   const [display, setDisplay] = useState(false);
 
@@ -100,9 +100,12 @@ function App() {
         Show resources
       </Button>
       <div style={{ display: display ? 'block' : 'none', marginTop: '20px' }}>
+        <h3>Here are some helpful resources for {color}:</h3>
+        
         {links.map((link, index) => (
-          <p key={index}>{link.link}</p>
+          <div><a key={index} href={link.link} target="_blank">{link.blurb}</a></div>
         ))}
+        
       </div>
     </div>
   );
