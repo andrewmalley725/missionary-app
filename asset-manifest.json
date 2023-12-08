@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.js": "/missionary-app/static/js/main.27e22e57.js",
+    "main.js": "/missionary-app/static/js/main.c2788b6e.js",
     "static/media/red.webp": "/missionary-app/static/media/red.65378350d9fc8053e62e.webp",
     "static/media/orange.webp": "/missionary-app/static/media/orange.2d5254edda3b132c06cd.webp",
     "static/media/yellow.webp": "/missionary-app/static/media/yellow.1e62f818d26f42e2a4a2.webp",
     "static/media/green.webp": "/missionary-app/static/media/green.8ddb0f6dbd3dfaa6873a.webp",
     "index.html": "/missionary-app/index.html",
-    "main.27e22e57.js.map": "/missionary-app/static/js/main.27e22e57.js.map"
+    "main.c2788b6e.js.map": "/missionary-app/static/js/main.c2788b6e.js.map"
   },
   "entrypoints": [
-    "static/js/main.27e22e57.js"
+    "static/js/main.c2788b6e.js"
   ]
 }
