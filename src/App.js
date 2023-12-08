@@ -55,11 +55,6 @@ function App() {
     setLinks(data.filter((record) => record.color === col[0].color));
   };
 
-
-  console.log(color);
-  console.log(sliderValue);
-  console.log(links);
-
   return (
     <div style={{ textAlign: 'center', padding: '20px', color: theme.primaryColor }}>
       <h1>Missionary Wellness App</h1>
@@ -97,13 +92,18 @@ function App() {
         />
       </Box>
       
-      <div style={{  marginTop: '20px' }}>
+      <div style={{ marginTop: '20px' }}>
         <h3>Here are some helpful resources for {color}:</h3>
         
-        {links.map((link, index) => (
-          <div><a key={index} href={link.link} target="_blank">{link.blurb}</a></div>
-        ))}
-        
+        <ul style={{ listStyleType: 'none', padding: 0 }}>
+          {links.map((link, index) => (
+            <li key={index} style={{ marginBottom: '10px' }}>
+              <a href={link.link} target="_blank" style={{ textDecoration: 'none', color: 'blue' }}>
+                {link.blurb}
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );
